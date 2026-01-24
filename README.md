@@ -1,4 +1,4 @@
-# git-init-uja-resrepo
-*Recursos Online Etiquetados para el proyecto Git Init UJA.*
+# dagilresrepo
+*Recursos Online Etiquetados para la asignatura Desarrollo Ágil.*
 
-🌍 https://vrivas.github.io/git-init-uja-resrepo/
+🌍
