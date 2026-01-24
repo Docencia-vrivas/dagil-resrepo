@@ -187,6 +187,10 @@ function recurso2html(resource, num) {
                 <div class="recurso-nivel">${resource.nivel}</div>
                 <h3 class="recurso-titulo"><a href="${resource.url}" target="_blank">${resource.titulo}</a></h3>
                 <div class="listados-chips">
+                    <div class="listado-chips-practica">
+                        <div class="listado-chips-label">Práctica</div>
+                        ${resource.practica.map((e) => "<span class='chip-practica'>" + e + "</span> ").join("")}
+                    </div>
                     <div class="listado-chips-tags">
                         <div class="listado-chips-label">Tags</div>
                         ${resource.tags.map((e) => "<span class='chip-tag'>" + e + "</span> ").join("")}
@@ -195,10 +199,7 @@ function recurso2html(resource, num) {
                     <div class="listado-chips-label">Formatos</div>
                         ${resource.formatos.map((e) => "<span class='chip-formato'>" + e + "</span> ").join("")}
                     </div>
-                    <div class="listado-chips-practica">
-                    <div class="listado-chips-label">Práctica</div>
-                        ${resource.practica.map((e) => "<span class='chip-practica'>" + e + "</span> ").join("")}
-                    </div>
+                    
                 </div>
                 <div class="recurso-url">${resource.url.split("/")[2]}</div>
             </article>
