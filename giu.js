@@ -8,7 +8,7 @@
 // Constantes
 const ULTIMOS_RECURSOS = 5;
 const MAX_URL_LENGTH = 50;
-const FILTROS = ["tags", "asignaturas", "formatos", "nivel", "idiomas"];
+const FILTROS = ["tags", "practica", "formatos", "nivel", "idiomas"];
 
 /**
  * Método de Array que devuelve todos los recursos que contienen alguno de los términos en el campo indicado
