@@ -1,92 +1,88 @@
 :root {
-    /* Definición de constantes */
-    --nivel-básico-oscuro: rgba(8, 117, 8, 1);
-    --nivel-básico-claro: rgba(8, 117, 8, 0.2);
-    --nivel-básico-más-claro: rgb(108, 255, 108, 0.1);
-    
-    --nivel-medio-oscuro: rgba(241, 144, 26, 1);
-    --nivel-medio-claro: rgba(241, 144, 26, 0.2);
-    --nivel-medio-más-claro: rgba(255, 240, 220, 0.3);
+  /* Definición de constantes */
+  --nivel-básico-oscuro: rgba(8, 117, 8, 1);
+  --nivel-básico-claro: rgba(8, 117, 8, 0.2);
+  --nivel-básico-más-claro: rgb(108, 255, 108, 0.1);
 
+  --nivel-medio-oscuro: rgba(241, 144, 26, 1);
+  --nivel-medio-claro: rgba(241, 144, 26, 0.2);
+  --nivel-medio-más-claro: rgba(255, 240, 220, 0.3);
 
-    --nivel-avanzado-oscuro: rgba(225, 44, 44, 1);
-    --nivel-avanzado-claro: rgba(225, 44, 44, 0.2);
-    --nivel-avanzado-más-claro: rgba(325, 144, 144, 0.1);
+  --nivel-avanzado-oscuro: rgba(225, 44, 44, 1);
+  --nivel-avanzado-claro: rgba(225, 44, 44, 0.2);
+  --nivel-avanzado-más-claro: rgba(325, 144, 144, 0.1);
 
-    --recurso-sombra: rgba(180, 180, 180, .8);
+  --recurso-sombra: rgba(180, 180, 180, 0.8);
 
-    --fondo-gris-oscuro: rgba(180, 180, 180, 1);
-    --fondo-chip-tag: green;
-    --fondo-chip-formato: blue;
+  --fondo-gris-oscuro: rgba(180, 180, 180, 1);
+  --fondo-chip-tag: green;
+  --fondo-chip-formato: blue;
+  --fondo-chip-practica: orange;
 
-    --fondo-secciones: white;
+  --fondo-secciones: white;
 
-    --fondo-campo-busqueda: rgb(158, 255, 158, 0.1);
-    --recuadro-campo-busqueda: rgba(8, 117, 8, 0.2);
+  --fondo-campo-busqueda: rgb(158, 255, 158, 0.1);
+  --recuadro-campo-busqueda: rgba(8, 117, 8, 0.2);
 
-
-    --rojo: #f05133;
+  --rojo: #f05133;
 }
 * {
-    font-family: "Red Hat Display", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Red Hat Display", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 body {
-    background-color: #f5f5f5;
+  background-color: #f5f5f5;
 }
 
 header {
-    display: grid;
-    column-gap: 1em;
-    column-count: 20;
-    background-color: var(--fondo-secciones);
-    margin: 1em auto;
+  display: grid;
+  column-gap: 1em;
+  column-count: 20;
+  background-color: var(--fondo-secciones);
+  margin: 1em auto;
 }
 
 .logo {
-    width: 5em;
-    grid-column-start: 1;
-    grid-column-end: 2;
-    padding: 0em 2em 0em 0em;
-    margin: 0em 0em 0em 0em;
-    border-right: 2px solid var(--rojo);
-    display: inline-block;
-
+  width: 5em;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  padding: 0em 2em 0em 0em;
+  margin: 0em 0em 0em 0em;
+  border-right: 2px solid var(--rojo);
+  display: inline-block;
 }
 
 header h1 {
-    grid-column-start: 2;
-    grid-column-end: 20;
-    vertical-align: middle;
-    margin: auto 0em auto 0em;
+  grid-column-start: 2;
+  grid-column-end: 20;
+  vertical-align: middle;
+  margin: auto 0em auto 0em;
 }
 
 menu {
-    width: 20em;
-    float: left;
-    width: 15%;
-    max-width: 15%;
-    margin: .3em 0 0 0;
-    padding: 0px;
-    background-color: var(--fondo-secciones);;
-    border-radius: .5em;
+  width: 20em;
+  float: left;
+  width: 15%;
+  max-width: 15%;
+  margin: 0.3em 0 0 0;
+  padding: 0px;
+  background-color: var(--fondo-secciones);
+  border-radius: 0.5em;
 }
 
-
-
 menu article div {
-    font-size: .9em;
-    /*margin-left: 0.2em;*/
+  font-size: 0.9em;
+  /*margin-left: 0.2em;*/
 }
 
 main {
-    float: left;
-    width: 80%;
-    max-width: 80%;
-    margin: 0px;
-    margin-left: 1%;
+  float: left;
+  width: 80%;
+  max-width: 80%;
+  margin: 0px;
+  margin-left: 1%;
 }
 
 /*h3#titulo-main {
@@ -94,35 +90,33 @@ main {
     width: 70%;
 }*/
 
-
 #titulo-main,
 #buscar-recurso-por-contenido-titulo {
-    margin: 1em 0em 1em 0em;
-    width: 100%;
+  margin: 1em 0em 1em 0em;
+  width: 100%;
 }
-
 
 .cardinalidad {
-    font-size: 0.8em;
-    font-style: italic;
-    color: gray;
+  font-size: 0.8em;
+  font-style: italic;
+  color: gray;
 }
 #buscar-recurso-btn {
-    display: none;
+  display: none;
 }
-#url-generada-seccion{
-    font-size: 0.7em;
+#url-generada-seccion {
+  font-size: 0.7em;
 }
-#url-generada a, 
+#url-generada a,
 #url-generada a:visited {
-    clear: both;
-    color: blue;
-    background-color: white;
-    padding: 0.2em;
+  clear: both;
+  color: blue;
+  background-color: white;
+  padding: 0.2em;
 }
 #copiar-url-generada-btn {
-    font-size: 2.0em;
-    cursor: pointer;
+  font-size: 2em;
+  cursor: pointer;
 }
 
 /*
@@ -131,207 +125,209 @@ main {
 ----------------------------------------------------------------------------------------------------------------
 */
 .recurso {
-    display: block;
-    float: left;
-    margin: 1em;
-    padding: .6em;
-    background-color: white;
-    border-radius: 0.4em;
-    font-size: smaller;
-    box-shadow: 0.3em 0.3em var( --recurso-sombra );
+  display: block;
+  float: left;
+  margin: 1em;
+  padding: 0.6em;
+  background-color: white;
+  border-radius: 0.4em;
+  font-size: smaller;
+  box-shadow: 0.3em 0.3em var(--recurso-sombra);
 }
 
 .recurso-num {
-    text-align: center;
-    font-weight: bold;
-    color: black;
-    margin: -1.1em 0em 0em 1em;
-    background-color: inherit;
-    width: 3em;
-    background-color: white;
-    border-radius: 0.4em;
-    padding: 0.2em 0em 0em 0em;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  margin: -1.1em 0em 0em 1em;
+  background-color: inherit;
+  width: 3em;
+  background-color: white;
+  border-radius: 0.4em;
+  padding: 0.2em 0em 0em 0em;
 }
 
 .recurso-titulo {
-    margin-right: 1em;
+  margin-right: 1em;
 }
 .recurso-url {
-    font-size: 0.7em;
-    text-align: right;
-    font-style: italic;
+  font-size: 0.7em;
+  text-align: right;
+  font-style: italic;
 }
 .recurso-nivel {
-    float: right;
-    margin-top: -0.6em;
-    font-variant: small-caps;
-    font-size: smaller;
+  float: right;
+  margin-top: -0.6em;
+  font-variant: small-caps;
+  font-size: smaller;
 }
 /* Recursos de nivel básico */
 .recurso-nivel-básico .recurso-nivel {
-    color: var( --nivel-básico-oscuro );
+  color: var(--nivel-básico-oscuro);
 }
 .recurso.recurso-nivel-básico {
-    background-color:var( --nivel-básico-más-claro );
+  background-color: var(--nivel-básico-más-claro);
 }
 
-.recurso-nivel-básico, 
+.recurso-nivel-básico,
 .recurso-nivel-básico .recurso-num {
-    border: 1px solid var( --nivel-básico-oscuro );
+  border: 1px solid var(--nivel-básico-oscuro);
 }
 /* Recursos de nivel medio */
 .recurso-nivel-medio .recurso-nivel {
-    color: var( --nivel-medio-oscuro );
+  color: var(--nivel-medio-oscuro);
 }
 .recurso.recurso-nivel-medio {
-    background-color:var( --nivel-medio-más-claro );
+  background-color: var(--nivel-medio-más-claro);
 }
 
 .recurso-nivel-medio,
 .recurso-nivel-medio .recurso-num {
-    border: 1px solid var( --nivel-medio-oscuro );
+  border: 1px solid var(--nivel-medio-oscuro);
 }
-
 
 /* Recursos de nivel avanzado */
 .recurso-nivel-avanzado .recurso-nivel {
-    color: var( --nivel-avanzado-oscuro );
+  color: var(--nivel-avanzado-oscuro);
 }
 .recurso.recurso-nivel-avanzado {
-    background-color:var( --nivel-avanzado-más-claro );
+  background-color: var(--nivel-avanzado-más-claro);
 }
 
-.recurso-nivel-avanzado, 
+.recurso-nivel-avanzado,
 .recurso-nivel-avanzado .recurso-num {
-    border: 1px solid var( --nivel-avanzado-oscuro );
+  border: 1px solid var(--nivel-avanzado-oscuro);
 }
-
 
 /* Estilos para las chips de tags, formatos, etc... */
 .listados-chips {
-    display: inline-block;
-    margin: 0em 0em 0em 0em;
-    padding: 0em 0em 0em 0em;
-    text-align: center;
-    clear: both;
+  display: inline-block;
+  margin: 0em 0em 0em 0em;
+  padding: 0em 0em 0em 0em;
+  text-align: center;
+  clear: both;
 }
 .listado-chips-label {
-    font-size: 0.6em;
-    width: fit-content;
-    font-weight: bold;
-    margin: -1em 0em 0em 0em;
-    padding-right: 0.2em;
-    font-variant: small-caps;
+  font-size: 0.6em;
+  width: fit-content;
+  font-weight: bold;
+  margin: -1em 0em 0em 0em;
+  padding-right: 0.2em;
+  font-variant: small-caps;
 }
 .listado-chips-formatos,
-.listado-chips-tags {
-    border-radius: 0.2em;
-    padding: .3em;
-    float: left;
-    margin: 0.3em;
+.listado-chips-tags,
+.listado-chips-practica {
+  border-radius: 0.2em;
+  padding: 0.3em;
+  float: left;
+  margin: 0.3em;
 }
 
 .listado-chips-tags {
-    border-right: 1px solid var(--fondo-chip-tag);
-    border-left: 1px solid var(--fondo-chip-tag);
-
+  border-right: 1px solid var(--fondo-chip-tag);
+  border-left: 1px solid var(--fondo-chip-tag);
 }
 
 .listado-chips-formatos {
-    border-right: 1px solid var(--fondo-chip-formato);
-    border-left: 1px solid var(--fondo-chip-formato);
+  border-right: 1px solid var(--fondo-chip-formato);
+  border-left: 1px solid var(--fondo-chip-formato);
 }
 
+.listado-chips-practica {
+  border-right: 1px solid var(--fondo-chip-practica);
+  border-left: 1px solid var(--fondo-chip-practica);
+}
 .chip-formato,
-.chip-tag {
-    border-bottom-left-radius: .3em;
-    font-size: 80%;
-    padding: 0em .3em 0em .3em;
-    color: white;
-    font-weight: bold;
-    letter-spacing: .1em;
+.chip-tag,
+.chip-practica {
+  border-bottom-left-radius: 0.3em;
+  font-size: 80%;
+  padding: 0em 0.3em 0em 0.3em;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 0.1em;
 }
 
 .chip-formato {
-    background-color: blue;
+  background-color: var(--fondo-chip-formato);
 }
 
 .chip-tag {
-    background-color: green;
+  background-color: var(--fondo-chip-tag);
+}
+
+.chip-practica {
+  background-color: var(--fondo-chip-practica);
 }
 .mensaje-error {
-    display: block;
-    margin-bottom: 1em;
-    padding: 1em;
-    border: 1px solid #f00;
-    background-color: #fdd;
+  display: block;
+  margin-bottom: 1em;
+  padding: 1em;
+  border: 1px solid #f00;
+  background-color: #fdd;
 }
 
-
 menu h4 {
-    margin: 1em 2em 0em 0em;
-    border-bottom: 2px dashed var(--fondo-gris-oscuro);
-    abackground-color: var(--fondo-gris-oscuro);
-    aborder-radius: 0.4em;
-    padding: 0.1em;
-    padding-left: .3em;
-    
-    font-variant: small-caps;
+  margin: 1em 2em 0em 0em;
+  border-bottom: 2px dashed var(--fondo-gris-oscuro);
+  abackground-color: var(--fondo-gris-oscuro);
+  aborder-radius: 0.4em;
+  padding: 0.1em;
+  padding-left: 0.3em;
 
+  font-variant: small-caps;
 }
 
 menu article {
-    margin: 0.3em 0em 0em 0em;
-    padding: 0em 0em 0em 0em;
+  margin: 0.3em 0em 0em 0em;
+  padding: 0em 0em 0em 0em;
 }
 
 menu#sidebar {
-    margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 rojo {
-    color: var(--rojo);
+  color: var(--rojo);
 }
-
-
 
 footer {
-    text-align: left;
-    margin: 2em auto;
-    padding: 1em 10% 1em 45%;
-    background-color: var(--fondo-secciones);
-    clear:both;
-    font-size: smaller;
-    clear: both;    
-    color: gray;
+  text-align: left;
+  margin: 2em auto;
+  padding: 1em 10% 1em 45%;
+  background-color: var(--fondo-secciones);
+  clear: both;
+  font-size: smaller;
+  clear: both;
+  color: gray;
 }
 #footer-containt {
-    border-left: 2px solid var(--rojo);
-    padding-left: 1em;
+  border-left: 2px solid var(--rojo);
+  padding-left: 1em;
 }
 footer .enlaces {
-    font-size: smaller;
+  font-size: smaller;
 }
 
 footer p.creado-por {
-    border-top: 1px solid var(--rojo);
-    padding-top: .3em;
-    width: fit-content;
+  border-top: 1px solid var(--rojo);
+  padding-top: 0.3em;
+  width: fit-content;
 }
 
 .nombre-proyecto {
-    font-variant: small-caps;
+  font-variant: small-caps;
 }
 
 #buscar-recurso,
 #buscar-recurso:focus {
-   /*box-shadow: 0 0 10px green; */
-    outline: none;
-    border: 2px solid var(--recuadro-campo-busqueda);
-    padding: .3em;
-    width: 80%;
-    padding-left: 20px;
-    background: url("./assets/lupa.png") no-repeat left;
-    background-size: 18px;
-    background-color: var(--fondo-campo-busqueda);
-    
+  /*box-shadow: 0 0 10px green; */
+  outline: none;
+  border: 2px solid var(--recuadro-campo-busqueda);
+  padding: 0.3em;
+  width: 80%;
+  padding-left: 20px;
+  background: url("./assets/lupa.png") no-repeat left;
+  background-size: 18px;
+  background-color: var(--fondo-campo-busqueda);
 }
