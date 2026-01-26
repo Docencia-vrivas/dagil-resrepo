@@ -1,4 +1,4 @@
-var resources = [
+var resources_git = [
   /*
     {
         titulo: "Plantilla",
