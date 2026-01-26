@@ -30,6 +30,8 @@
   --fondo-campo-busqueda-vacio: rgb(158, 255, 158, 0.1);
   --recuadro-campo-busqueda-vacio: rgba(8, 117, 8, 0.2);
 
+  --fondo-texto-en-titulo: rgba(255, 255, 255, 0.8);
+
   --rojo: #f05133;
 }
 * {
@@ -326,6 +328,12 @@ footer p.creado-por {
   font-variant: small-caps;
 }
 
+.termino-buscado {
+  border: 0px dashed var(--recuadro-campo-busqueda-relleno);
+  background-color: var(--fondo-texto-en-titulo);
+  font-weight: normal;
+  color: orange;
+}
 #buscar-recurso,
 #buscar-recurso:focus {
   /*box-shadow: 0 0 10px green; */
