@@ -79,7 +79,7 @@ var resources_trello = [
     idiomas: ["español"],
   },
   {
-    titulo: "Como añadir tarjetas y listas en Trello.",
+    titulo: "Cómo añadir tarjetas y listas en Trello.",
     url: "https://www.youtube.com/watch?v=eb2L2t1WBwc",
     tags: ["tarjetas", "listas"],
     temas: ["Trello"],

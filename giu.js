@@ -198,17 +198,61 @@ function mostrarRecursos(objetoRecursos) {
 }
 
 /**
+ *
+ */
+function resaltarCadenaBuscada(cadena) {
+  const cadenaBuscada = document.getElementById("buscar-recurso").value;
+  if (cadenaBuscada.length > 0) {
+    const cadenaNormalizada = cadena
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+    let busquedaNormalizada = cadenaBuscada
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    let nuevaCadena = "";
+    let ultimaPosicion = -1;
+    let nuevaPosicion;
+    while (
+      (nuevaPosicion = cadenaNormalizada.indexOf(
+        busquedaNormalizada,
+        ultimaPosicion + 1,
+      )) >= 0
+    ) {
+      nuevaCadena += cadena.substring(ultimaPosicion + 1, nuevaPosicion);
+      nuevaCadena +=
+        "<span class='termino-buscado'>" +
+        cadena.substring(
+          nuevaPosicion,
+          nuevaPosicion + busquedaNormalizada.length,
+        ) +
+        "</span>";
+      ultimaPosicion = nuevaPosicion;
+    }
+    // el resto del título
+    nuevaCadena += cadena.substring(
+      ultimaPosicion + busquedaNormalizada.length,
+      cadena.length,
+    );
+    cadena = nuevaCadena;
+  }
+  return cadena;
+}
+/**
  * Convierte un recurso en un article con formato HTML
  * @param {Objeto} resource Recurso a convertir en HTML
  * @returns Recurso convertido en HTML
  */
 function recurso2html(resource) {
   let num = "#" + resource.temas[0] + resource.numero;
+  let tituloResaltado = resaltarCadenaBuscada(resource.titulo);
   return `
             <article class="recurso recurso-nivel-${resource.nivel}">
                 <div class="contenedor-recurso-num"><p class="recurso-num">${num}</p></div>
                 <div class="recurso-nivel">${resource.nivel}</div>
-                <h3 class="recurso-titulo"><a href="${resource.url}" target="_blank">${resource.titulo}</a></h3>
+                <h3 class="recurso-titulo"><a href="${resource.url}" target="_blank">${tituloResaltado}</a></h3>
                 <div class="listados-chips">
                     <div class="listado-chips-temas">
                         <div class="listado-chips-label">Temas</div>
