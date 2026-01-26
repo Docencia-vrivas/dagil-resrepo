@@ -15,11 +15,14 @@
   --recurso-sombra: rgba(180, 180, 180, 0.8);
 
   --fondo-gris-oscuro: rgba(180, 180, 180, 1);
-  --fondo-chip-tag: green;
-  --fondo-chip-formato: blue;
-  --fondo-chip-practica: orange;
-
+  --fondo-chip-tag: "";
+  --fondo-chip-formato: "";
+  --fondo-chip-practica: "";
   --fondo-secciones: white;
+
+  --texto-chip-tag: green;
+  --texto-chip-formato: blue;
+  --texto-chip-practica: orange;
 
   --fondo-campo-busqueda: rgb(158, 255, 158, 0.1);
   --recuadro-campo-busqueda: rgba(8, 117, 8, 0.2);
@@ -225,18 +228,18 @@ main {
 }
 
 .listado-chips-tags {
-  border-right: 1px solid var(--fondo-chip-tag);
-  border-left: 1px solid var(--fondo-chip-tag);
+  border-right: 1px solid var(--texto-chip-tag);
+  border-left: 1px solid var(--texto-chip-tag);
 }
 
 .listado-chips-formatos {
-  border-right: 1px solid var(--fondo-chip-formato);
-  border-left: 1px solid var(--fondo-chip-formato);
+  border-right: 1px solid var(--texto-chip-formato);
+  border-left: 1px solid var(--texto-chip-formato);
 }
 
 .listado-chips-practica {
-  border-right: 1px solid var(--fondo-chip-practica);
-  border-left: 1px solid var(--fondo-chip-practica);
+  border-right: 1px solid var(--texto-chip-practica);
+  border-left: 1px solid var(--texto-chip-practica);
 }
 .chip-formato,
 .chip-tag,
@@ -244,21 +247,23 @@ main {
   border-bottom-left-radius: 0.3em;
   font-size: 80%;
   padding: 0em 0.3em 0em 0.3em;
-  color: white;
   font-weight: bold;
   letter-spacing: 0.1em;
 }
 
 .chip-formato {
   background-color: var(--fondo-chip-formato);
+  color: var(--texto-chip-formato);
 }
 
 .chip-tag {
   background-color: var(--fondo-chip-tag);
+  color: var(--texto-chip-tag);
 }
 
 .chip-practica {
   background-color: var(--fondo-chip-practica);
+  color: var(--texto-chip-practica);
 }
 .mensaje-error {
   display: block;
