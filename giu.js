@@ -83,6 +83,7 @@ Array.prototype.creaIndice = function (campo) {
  * @returns Devuelve un índice de los valores de un campo más el número de recursos que lo contienen
  */
 Array.prototype.creaIndiceConCardinalidad = function (campo) {
+  let vector = this;
   let terminos = [];
   if (campo) {
     this.forEach(function (resource) {
@@ -97,7 +98,7 @@ Array.prototype.creaIndiceConCardinalidad = function (campo) {
   let result = terminos.map(function (termino) {
     return {
       valor: termino,
-      cardinalidad: resources.selectPorCampo(campo, termino).length,
+      cardinalidad: vector.selectPorCampo(campo, termino).length,
     };
   });
   return result;
@@ -280,6 +281,13 @@ function aplicarFiltros(filtros, busqueda) {
   if (busqueda) {
     result.recursos = result.recursos.selectPorCadenaEnTitulo(busqueda);
   }
+
+  // En este punto, ya están seleccionados los recursos que cumplen con los filtros y el criteri de búsqueda.
+  // Intentamos "rehacer" los índices
+  FILTROS.forEach(function (filtro) {
+    escribeCheckbox(filtro, result.recursos.creaIndiceConCardinalidad(filtro));
+  });
+  // ordenamos y mostramos
   result.recursos.sort(comparaPorNivel);
   mostrarRecursos(result);
   mostrarURLGeneradaPorFiltros(
