@@ -1,1 +1,1 @@
-var resources = [].concat(resources_git, resources_trello);
+let RESOURCES = [].concat(resources_git, resources_trello);

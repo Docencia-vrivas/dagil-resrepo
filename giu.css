@@ -17,15 +17,18 @@
   --fondo-gris-oscuro: rgba(180, 180, 180, 1);
   --fondo-chip-tag: "";
   --fondo-chip-formato: "";
-  --fondo-chip-practica: "";
+  --fondo-chip-temas: "";
   --fondo-secciones: white;
 
   --texto-chip-tag: green;
   --texto-chip-formato: blue;
-  --texto-chip-practica: orange;
+  --texto-chip-temas: orange;
 
-  --fondo-campo-busqueda: rgb(158, 255, 158, 0.1);
-  --recuadro-campo-busqueda: rgba(8, 117, 8, 0.2);
+  --fondo-campo-busqueda-relleno: rgb(158, 158, 255, 0.1);
+  --recuadro-campo-busqueda-relleno: rgba(8, 8, 255, 0.2);
+
+  --fondo-campo-busqueda-vacio: rgb(158, 255, 158, 0.1);
+  --recuadro-campo-busqueda-vacio: rgba(8, 117, 8, 0.2);
 
   --rojo: #f05133;
 }
@@ -140,14 +143,15 @@ main {
 
 .recurso-num {
   text-align: center;
-  font-weight: bold;
+  font-weight: normal;
   color: black;
   margin: -1.1em 0em 0em 1em;
   background-color: inherit;
-  width: 3em;
+  /*width: 3em;*/
+  width: fit-content;
   background-color: white;
   border-radius: 0.4em;
-  padding: 0.2em 0em 0em 0em;
+  padding: 0.2em 0.2em 0em 0.2em;
 }
 
 .recurso-titulo {
@@ -220,7 +224,7 @@ main {
 }
 .listado-chips-formatos,
 .listado-chips-tags,
-.listado-chips-practica {
+.listado-chips-temas {
   border-radius: 0.2em;
   padding: 0.3em;
   float: left;
@@ -237,13 +241,13 @@ main {
   border-left: 1px solid var(--texto-chip-formato);
 }
 
-.listado-chips-practica {
-  border-right: 1px solid var(--texto-chip-practica);
-  border-left: 1px solid var(--texto-chip-practica);
+.listado-chips-temas {
+  border-right: 1px solid var(--texto-chip-temas);
+  border-left: 1px solid var(--texto-chip-temas);
 }
 .chip-formato,
 .chip-tag,
-.chip-practica {
+.chip-temas {
   border-bottom-left-radius: 0.3em;
   font-size: 80%;
   padding: 0em 0.3em 0em 0.3em;
@@ -261,9 +265,9 @@ main {
   color: var(--texto-chip-tag);
 }
 
-.chip-practica {
-  background-color: var(--fondo-chip-practica);
-  color: var(--texto-chip-practica);
+.chip-temas {
+  background-color: var(--fondo-chip-temas);
+  color: var(--texto-chip-temas);
 }
 .mensaje-error {
   display: block;
@@ -276,8 +280,6 @@ main {
 menu h4 {
   margin: 1em 2em 0em 0em;
   border-bottom: 2px dashed var(--fondo-gris-oscuro);
-  abackground-color: var(--fondo-gris-oscuro);
-  aborder-radius: 0.4em;
   padding: 0.1em;
   padding-left: 0.3em;
 
@@ -328,11 +330,15 @@ footer p.creado-por {
 #buscar-recurso:focus {
   /*box-shadow: 0 0 10px green; */
   outline: none;
-  border: 2px solid var(--recuadro-campo-busqueda);
+  border: 2px solid var(--recuadro-campo-busqueda-relleno);
   padding: 0.3em;
   width: 80%;
   padding-left: 20px;
   background: url("./assets/lupa.png") no-repeat left;
   background-size: 18px;
-  background-color: var(--fondo-campo-busqueda);
+  background-color: var(--fondo-campo-busqueda-relleno);
+}
+#buscar-recurso:placeholder-shown {
+  background-color: var(--fondo-campo-busqueda-vacio);
+  border: 2px solid var(--recuadro-campo-busqueda-vacio);
 }

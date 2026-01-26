@@ -8,7 +8,7 @@
 // Constantes
 const ULTIMOS_RECURSOS = 5;
 const MAX_URL_LENGTH = 50;
-const FILTROS = ["tags", "practica", "formatos", "nivel", "idiomas"];
+const FILTROS = ["tags", "temas", "formatos", "nivel", "idiomas"];
 
 /**
  * Método de Array que devuelve todos los recursos que contienen alguno de los términos en el campo indicado
@@ -83,6 +83,8 @@ Array.prototype.creaIndice = function (campo) {
  * @returns Devuelve un índice de los valores de un campo más el número de recursos que lo contienen
  */
 Array.prototype.creaIndiceConCardinalidad = function (campo) {
+  // thisArray es necesario para usarlo luego al establecer la cardinalidad
+  let thisArray = this;
   let terminos = [];
   if (campo) {
     this.forEach(function (resource) {
@@ -97,7 +99,7 @@ Array.prototype.creaIndiceConCardinalidad = function (campo) {
   let result = terminos.map(function (termino) {
     return {
       valor: termino,
-      cardinalidad: resources.selectPorCampo(campo, termino).length,
+      cardinalidad: thisArray.selectPorCampo(campo, termino).length,
     };
   });
   return result;
@@ -107,19 +109,20 @@ Array.prototype.creaIndiceConCardinalidad = function (campo) {
  * Muestra todos los elementos de un índice como checboxes
  * @param {String} divId Div en el que se van a mostrar los checkboxes
  * @param {Vector de pares} valores Conjunto de pares {termino,cardinalidad} que se van a mostrar
+ * @param {Vector de string} cbMarcados Indica los cb que el usuario ha marcado en el filtro
  */
-function escribeCheckbox(divId, valores) {
+function escribeCheckbox(divId, valores, cbMarcados = []) {
   let div = document.getElementById(divId);
   let html = "";
   valores.forEach(function (par) {
     let valor = par.valor;
     let cardinalidad = par.cardinalidad;
-    html += `<input type="checkbox" name="cb" value="${divId}_${valor}" id="${divId}_${valor}">
+    let checked = cbMarcados.includes(divId + "_" + valor) ? "checked" : "";
+    html += `<input type="checkbox" name="cb" value="${divId}_${valor}" id="${divId}_${valor}" ${checked}>
         <label for="${divId}_${valor}">${valor} <span class='cardinalidad'>(${cardinalidad})</span></label><br>`;
   });
   div.innerHTML = html;
 }
-
 /**
  * Asigna eventos a los checkboxes para filtrar los recursos
  */
@@ -152,12 +155,32 @@ function mostrarMensajeNoSeEncontraronRecursos() {
  *         siendo básico < medio < avanzado
  */
 function comparaPorNivel(a, b) {
-  if (a.nivel == b.nivel) return 0;
+  if (a.nivel.join() == b.nivel.join()) return 0;
   if (a.nivel == "básico") return -1;
   if (a.nivel == "medio" && b.nivel == "avanzado") return -1;
   return 1;
 }
 
+/**
+ * Compara dos recursos por nivel, y alfabéticamente
+ * @param {Recurso} a
+ * @param {Recurso} b
+ * @return Devuelve -1 para a<b; 0 para a==b y 1 para a>b.
+ *          Primero tiene en cuenta el nivel y luego el orden alfabético del título.
+ *          Para el nivel: siendo básico < medio < avanzado
+ */
+function comparaPorNivelYTitulo(a, b) {
+  let porNivel = comparaPorNivel(a, b);
+  if (porNivel != 0) return porNivel;
+  const CHAR_QUITAR = ["¿", "¡"];
+  let a_titulo = CHAR_QUITAR.includes(a.titulo[0])
+    ? a.titulo.substr(1, a.titulo.length)
+    : a.titulo;
+  let b_titulo = CHAR_QUITAR.includes(b.titulo[0])
+    ? b.titulo.substr(1, b.titulo.length)
+    : b.titulo;
+  return a_titulo < b_titulo ? -1 : a_titulo == b_titulo ? 0 : 1;
+}
 /**
  * Muestra los recursos, cada uno en un div
  * @param {Objeto que contiene un título y un vector de recursos} objetoRecursos
@@ -169,7 +192,7 @@ function mostrarRecursos(objetoRecursos) {
   let div = document.getElementById("recursos");
   let html = "";
   objetoRecursos.recursos.forEach(function (resource, i) {
-    html += recurso2html(resource, i + 1);
+    html += recurso2html(resource);
   });
   div.innerHTML = html;
 }
@@ -177,19 +200,19 @@ function mostrarRecursos(objetoRecursos) {
 /**
  * Convierte un recurso en un article con formato HTML
  * @param {Objeto} resource Recurso a convertir en HTML
- * @param {Number} num Número de recurso en orden de aparición
  * @returns Recurso convertido en HTML
  */
-function recurso2html(resource, num) {
+function recurso2html(resource) {
+  let num = "#" + resource.temas[0] + resource.numero;
   return `
             <article class="recurso recurso-nivel-${resource.nivel}">
                 <div class="contenedor-recurso-num"><p class="recurso-num">${num}</p></div>
                 <div class="recurso-nivel">${resource.nivel}</div>
                 <h3 class="recurso-titulo"><a href="${resource.url}" target="_blank">${resource.titulo}</a></h3>
                 <div class="listados-chips">
-                    <div class="listado-chips-practica">
-                        <div class="listado-chips-label">Práctica</div>
-                        ${resource.practica.map((e) => "<span class='chip-practica'>" + e + "</span> ").join("")}
+                    <div class="listado-chips-temas">
+                        <div class="listado-chips-label">Temas</div>
+                        ${resource.temas.map((e) => "<span class='chip-temas'>" + e + "</span> ").join("")}
                     </div>
                     <div class="listado-chips-tags">
                         <div class="listado-chips-label">Tags</div>
@@ -210,7 +233,7 @@ function recurso2html(resource, num) {
  * en los vectores de tags, asignaturas y formatos.
  */
 function eliminaCriteriosBusquedaDuplicados() {
-  resources.forEach(function (resource) {
+  RESOURCES.forEach(function (resource) {
     FILTROS.forEach(function (filtro) {
       if (resource[filtro])
         resource[filtro] = resource[filtro]
@@ -236,7 +259,7 @@ function getFiltrosPorParametro() {
       busqueda = value;
     }
   });
-  console.log("Filtros", filtros);
+  //console.log("Filtros", filtros);
   return { filtros, busqueda };
 }
 
@@ -266,13 +289,15 @@ function aplicarFiltros(filtros, busqueda) {
   let result = tmpSelec.length
     ? {
         titulo: "Recursos encontrados",
-        recursos: resources.filter((e) => true),
+        recursos: RESOURCES.filter((e) => true),
       }
     : ultimosNRecursos();
 
+  let campos = [];
   tmpSelec.forEach((selec) => {
     let [campo, valor] = selec.split("_");
     result.recursos = result.recursos.selectPorCampo(campo, valor);
+    campos.push(campo);
   });
 
   // Cribamos por la cadena de búsqueda
@@ -280,7 +305,20 @@ function aplicarFiltros(filtros, busqueda) {
   if (busqueda) {
     result.recursos = result.recursos.selectPorCadenaEnTitulo(busqueda);
   }
-  result.recursos.sort(comparaPorNivel);
+
+  // En este punto, ya están seleccionados los recursos que cumplen con los filtros y el criteri de búsqueda.
+  // Intentamos "rehacer" los índices
+  FILTROS.forEach(function (filtro) {
+    escribeCheckbox(
+      filtro,
+      result.recursos.creaIndiceConCardinalidad(filtro),
+      tmpSelec,
+    );
+  });
+  asignaEventosCheckbox();
+
+  // ordenamos y mostramos
+  result.recursos.sort(comparaPorNivelYTitulo);
   mostrarRecursos(result);
   mostrarURLGeneradaPorFiltros(
     decodeURIComponent(setFiltrosEnURL(setFiltrosPorCheckboxYBusqueda())),
@@ -324,7 +362,7 @@ function setFiltrosEnURL(filtros) {
   }
   url.search = searchParams.toString();
   //window.history.pushState({}, '', url);
-  console.log("URL", url);
+  //console.log("URL", url);
   return url;
 }
 
@@ -355,13 +393,17 @@ function copiarURLGenerada() {
   alert("URL copiada al portapapeles");
 }
 
+function numeraRecursos() {
+  RESOURCES.forEach((e, i) => (e.numero = i + 1));
+}
 /**
  * Función principal
  */
 function main() {
+  numeraRecursos(RESOURCES);
   eliminaCriteriosBusquedaDuplicados();
   FILTROS.forEach(function (filtro) {
-    escribeCheckbox(filtro, resources.creaIndiceConCardinalidad(filtro));
+    escribeCheckbox(filtro, RESOURCES.creaIndiceConCardinalidad(filtro));
   });
 
   let { filtros, busqueda } = getFiltrosPorParametro();
@@ -385,12 +427,12 @@ function main() {
  * @param {Number} n Número de recursos que se quieren obtener. Por defecto 5
  * @returns Los últimos N recursos del vector
  */
-function ultimosNRecursos(n = resources.length) {
+function ultimosNRecursos(n = RESOURCES.length) {
   return {
     titulo:
-      n < resources.length
+      n < RESOURCES.length
         ? "Mostrando los últimos recursos añadidos"
         : "Mostrando todos los recursos",
-    recursos: resources.slice(-n),
+    recursos: RESOURCES.slice(-n),
   };
 }
