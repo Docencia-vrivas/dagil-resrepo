@@ -192,7 +192,7 @@ function mostrarRecursos(objetoRecursos) {
   let div = document.getElementById("recursos");
   let html = "";
   objetoRecursos.recursos.forEach(function (resource, i) {
-    html += recurso2html(resource, i + 1);
+    html += recurso2html(resource);
   });
   div.innerHTML = html;
 }
@@ -200,10 +200,10 @@ function mostrarRecursos(objetoRecursos) {
 /**
  * Convierte un recurso en un article con formato HTML
  * @param {Objeto} resource Recurso a convertir en HTML
- * @param {Number} num Número de recurso en orden de aparición
  * @returns Recurso convertido en HTML
  */
-function recurso2html(resource, num) {
+function recurso2html(resource) {
+  let num = "#" + resource.practica[0] + resource.numero;
   return `
             <article class="recurso recurso-nivel-${resource.nivel}">
                 <div class="contenedor-recurso-num"><p class="recurso-num">${num}</p></div>
@@ -233,7 +233,7 @@ function recurso2html(resource, num) {
  * en los vectores de tags, asignaturas y formatos.
  */
 function eliminaCriteriosBusquedaDuplicados() {
-  resources.forEach(function (resource) {
+  RESOURCES.forEach(function (resource) {
     FILTROS.forEach(function (filtro) {
       if (resource[filtro])
         resource[filtro] = resource[filtro]
@@ -289,7 +289,7 @@ function aplicarFiltros(filtros, busqueda) {
   let result = tmpSelec.length
     ? {
         titulo: "Recursos encontrados",
-        recursos: resources.filter((e) => true),
+        recursos: RESOURCES.filter((e) => true),
       }
     : ultimosNRecursos();
 
@@ -393,13 +393,17 @@ function copiarURLGenerada() {
   alert("URL copiada al portapapeles");
 }
 
+function numeraRecursos() {
+  RESOURCES.forEach((e, i) => (e.numero = i + 1));
+}
 /**
  * Función principal
  */
 function main() {
+  numeraRecursos(RESOURCES);
   eliminaCriteriosBusquedaDuplicados();
   FILTROS.forEach(function (filtro) {
-    escribeCheckbox(filtro, resources.creaIndiceConCardinalidad(filtro));
+    escribeCheckbox(filtro, RESOURCES.creaIndiceConCardinalidad(filtro));
   });
 
   let { filtros, busqueda } = getFiltrosPorParametro();
@@ -423,12 +427,12 @@ function main() {
  * @param {Number} n Número de recursos que se quieren obtener. Por defecto 5
  * @returns Los últimos N recursos del vector
  */
-function ultimosNRecursos(n = resources.length) {
+function ultimosNRecursos(n = RESOURCES.length) {
   return {
     titulo:
-      n < resources.length
+      n < RESOURCES.length
         ? "Mostrando los últimos recursos añadidos"
         : "Mostrando todos los recursos",
-    recursos: resources.slice(-n),
+    recursos: RESOURCES.slice(-n),
   };
 }

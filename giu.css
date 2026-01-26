@@ -143,14 +143,15 @@ main {
 
 .recurso-num {
   text-align: center;
-  font-weight: bold;
+  font-weight: normal;
   color: black;
   margin: -1.1em 0em 0em 1em;
   background-color: inherit;
-  width: 3em;
+  /*width: 3em;*/
+  width: fit-content;
   background-color: white;
   border-radius: 0.4em;
-  padding: 0.2em 0em 0em 0em;
+  padding: 0.2em 0.2em 0em 0.2em;
 }
 
 .recurso-titulo {
