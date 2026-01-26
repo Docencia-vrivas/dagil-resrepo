@@ -24,8 +24,11 @@
   --texto-chip-formato: blue;
   --texto-chip-practica: orange;
 
-  --fondo-campo-busqueda: rgb(158, 255, 158, 0.1);
-  --recuadro-campo-busqueda: rgba(8, 117, 8, 0.2);
+  --fondo-campo-busqueda-relleno: rgb(158, 158, 255, 0.1);
+  --recuadro-campo-busqueda-relleno: rgba(8, 8, 255, 0.2);
+
+  --fondo-campo-busqueda-vacio: rgb(158, 255, 158, 0.1);
+  --recuadro-campo-busqueda-vacio: rgba(8, 117, 8, 0.2);
 
   --rojo: #f05133;
 }
@@ -276,8 +279,6 @@ main {
 menu h4 {
   margin: 1em 2em 0em 0em;
   border-bottom: 2px dashed var(--fondo-gris-oscuro);
-  abackground-color: var(--fondo-gris-oscuro);
-  aborder-radius: 0.4em;
   padding: 0.1em;
   padding-left: 0.3em;
 
@@ -328,11 +329,15 @@ footer p.creado-por {
 #buscar-recurso:focus {
   /*box-shadow: 0 0 10px green; */
   outline: none;
-  border: 2px solid var(--recuadro-campo-busqueda);
+  border: 2px solid var(--recuadro-campo-busqueda-relleno);
   padding: 0.3em;
   width: 80%;
   padding-left: 20px;
   background: url("./assets/lupa.png") no-repeat left;
   background-size: 18px;
-  background-color: var(--fondo-campo-busqueda);
+  background-color: var(--fondo-campo-busqueda-relleno);
+}
+#buscar-recurso:placeholder-shown {
+  background-color: var(--fondo-campo-busqueda-vacio);
+  border: 2px solid var(--recuadro-campo-busqueda-vacio);
 }
