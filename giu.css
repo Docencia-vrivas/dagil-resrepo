@@ -17,12 +17,12 @@
   --fondo-gris-oscuro: rgba(180, 180, 180, 1);
   --fondo-chip-tag: "";
   --fondo-chip-formato: "";
-  --fondo-chip-practica: "";
+  --fondo-chip-temas: "";
   --fondo-secciones: white;
 
   --texto-chip-tag: green;
   --texto-chip-formato: blue;
-  --texto-chip-practica: orange;
+  --texto-chip-temas: orange;
 
   --fondo-campo-busqueda-relleno: rgb(158, 158, 255, 0.1);
   --recuadro-campo-busqueda-relleno: rgba(8, 8, 255, 0.2);
@@ -224,7 +224,7 @@ main {
 }
 .listado-chips-formatos,
 .listado-chips-tags,
-.listado-chips-practica {
+.listado-chips-temas {
   border-radius: 0.2em;
   padding: 0.3em;
   float: left;
@@ -241,13 +241,13 @@ main {
   border-left: 1px solid var(--texto-chip-formato);
 }
 
-.listado-chips-practica {
-  border-right: 1px solid var(--texto-chip-practica);
-  border-left: 1px solid var(--texto-chip-practica);
+.listado-chips-temas {
+  border-right: 1px solid var(--texto-chip-temas);
+  border-left: 1px solid var(--texto-chip-temas);
 }
 .chip-formato,
 .chip-tag,
-.chip-practica {
+.chip-temas {
   border-bottom-left-radius: 0.3em;
   font-size: 80%;
   padding: 0em 0.3em 0em 0.3em;
@@ -265,9 +265,9 @@ main {
   color: var(--texto-chip-tag);
 }
 
-.chip-practica {
-  background-color: var(--fondo-chip-practica);
-  color: var(--texto-chip-practica);
+.chip-temas {
+  background-color: var(--fondo-chip-temas);
+  color: var(--texto-chip-temas);
 }
 .mensaje-error {
   display: block;

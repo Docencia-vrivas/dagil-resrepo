@@ -8,7 +8,7 @@
 // Constantes
 const ULTIMOS_RECURSOS = 5;
 const MAX_URL_LENGTH = 50;
-const FILTROS = ["tags", "practica", "formatos", "nivel", "idiomas"];
+const FILTROS = ["tags", "temas", "formatos", "nivel", "idiomas"];
 
 /**
  * Método de Array que devuelve todos los recursos que contienen alguno de los términos en el campo indicado
@@ -203,16 +203,16 @@ function mostrarRecursos(objetoRecursos) {
  * @returns Recurso convertido en HTML
  */
 function recurso2html(resource) {
-  let num = "#" + resource.practica[0] + resource.numero;
+  let num = "#" + resource.temas[0] + resource.numero;
   return `
             <article class="recurso recurso-nivel-${resource.nivel}">
                 <div class="contenedor-recurso-num"><p class="recurso-num">${num}</p></div>
                 <div class="recurso-nivel">${resource.nivel}</div>
                 <h3 class="recurso-titulo"><a href="${resource.url}" target="_blank">${resource.titulo}</a></h3>
                 <div class="listados-chips">
-                    <div class="listado-chips-practica">
-                        <div class="listado-chips-label">Práctica</div>
-                        ${resource.practica.map((e) => "<span class='chip-practica'>" + e + "</span> ").join("")}
+                    <div class="listado-chips-temas">
+                        <div class="listado-chips-label">Temas</div>
+                        ${resource.temas.map((e) => "<span class='chip-temas'>" + e + "</span> ").join("")}
                     </div>
                     <div class="listado-chips-tags">
                         <div class="listado-chips-label">Tags</div>
