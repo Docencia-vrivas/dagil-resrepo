@@ -259,7 +259,7 @@ function getFiltrosPorParametro() {
       busqueda = value;
     }
   });
-  console.log("Filtros", filtros);
+  //console.log("Filtros", filtros);
   return { filtros, busqueda };
 }
 
@@ -362,7 +362,7 @@ function setFiltrosEnURL(filtros) {
   }
   url.search = searchParams.toString();
   //window.history.pushState({}, '', url);
-  console.log("URL", url);
+  //console.log("URL", url);
   return url;
 }
 
