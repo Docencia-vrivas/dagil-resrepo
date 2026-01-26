@@ -154,12 +154,32 @@ function mostrarMensajeNoSeEncontraronRecursos() {
  *         siendo básico < medio < avanzado
  */
 function comparaPorNivel(a, b) {
-  if (a.nivel == b.nivel) return 0;
+  if (a.nivel.join() == b.nivel.join()) return 0;
   if (a.nivel == "básico") return -1;
   if (a.nivel == "medio" && b.nivel == "avanzado") return -1;
   return 1;
 }
 
+/**
+ * Compara dos recursos por nivel, y alfabéticamente
+ * @param {Recurso} a
+ * @param {Recurso} b
+ * @return Devuelve -1 para a<b; 0 para a==b y 1 para a>b.
+ *          Primero tiene en cuenta el nivel y luego el orden alfabético del título.
+ *          Para el nivel: siendo básico < medio < avanzado
+ */
+function comparaPorNivelYTitulo(a, b) {
+  let porNivel = comparaPorNivel(a, b);
+  if (porNivel != 0) return porNivel;
+  const CHAR_QUITAR = ["¿", "¡"];
+  let a_titulo = CHAR_QUITAR.includes(a.titulo[0])
+    ? a.titulo.substr(1, a.titulo.length)
+    : a.titulo;
+  let b_titulo = CHAR_QUITAR.includes(b.titulo[0])
+    ? b.titulo.substr(1, b.titulo.length)
+    : b.titulo;
+  return a_titulo < b_titulo ? -1 : a_titulo == b_titulo ? 0 : 1;
+}
 /**
  * Muestra los recursos, cada uno en un div
  * @param {Objeto que contiene un título y un vector de recursos} objetoRecursos
@@ -297,7 +317,7 @@ function aplicarFiltros(filtros, busqueda) {
   asignaEventosCheckbox();
 
   // ordenamos y mostramos
-  result.recursos.sort(comparaPorNivel);
+  result.recursos.sort(comparaPorNivelYTitulo);
   mostrarRecursos(result);
   mostrarURLGeneradaPorFiltros(
     decodeURIComponent(setFiltrosEnURL(setFiltrosPorCheckboxYBusqueda())),
