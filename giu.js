@@ -108,19 +108,20 @@ Array.prototype.creaIndiceConCardinalidad = function (campo) {
  * Muestra todos los elementos de un índice como checboxes
  * @param {String} divId Div en el que se van a mostrar los checkboxes
  * @param {Vector de pares} valores Conjunto de pares {termino,cardinalidad} que se van a mostrar
+ * @param {Vector de string} cbMarcados Indica los cb que el usuario ha marcado en el filtro
  */
-function escribeCheckbox(divId, valores) {
+function escribeCheckbox(divId, valores, cbMarcados = []) {
   let div = document.getElementById(divId);
   let html = "";
   valores.forEach(function (par) {
     let valor = par.valor;
     let cardinalidad = par.cardinalidad;
-    html += `<input type="checkbox" name="cb" value="${divId}_${valor}" id="${divId}_${valor}">
+    let checked = cbMarcados.includes(divId + "_" + valor) ? "checked" : "";
+    html += `<input type="checkbox" name="cb" value="${divId}_${valor}" id="${divId}_${valor}" ${checked}>
         <label for="${divId}_${valor}">${valor} <span class='cardinalidad'>(${cardinalidad})</span></label><br>`;
   });
   div.innerHTML = html;
 }
-
 /**
  * Asigna eventos a los checkboxes para filtrar los recursos
  */
@@ -271,9 +272,11 @@ function aplicarFiltros(filtros, busqueda) {
       }
     : ultimosNRecursos();
 
+  let campos = [];
   tmpSelec.forEach((selec) => {
     let [campo, valor] = selec.split("_");
     result.recursos = result.recursos.selectPorCampo(campo, valor);
+    campos.push(campo);
   });
 
   // Cribamos por la cadena de búsqueda
@@ -285,8 +288,14 @@ function aplicarFiltros(filtros, busqueda) {
   // En este punto, ya están seleccionados los recursos que cumplen con los filtros y el criteri de búsqueda.
   // Intentamos "rehacer" los índices
   FILTROS.forEach(function (filtro) {
-    escribeCheckbox(filtro, result.recursos.creaIndiceConCardinalidad(filtro));
+    escribeCheckbox(
+      filtro,
+      result.recursos.creaIndiceConCardinalidad(filtro),
+      tmpSelec,
+    );
   });
+  asignaEventosCheckbox();
+
   // ordenamos y mostramos
   result.recursos.sort(comparaPorNivel);
   mostrarRecursos(result);

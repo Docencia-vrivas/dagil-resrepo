@@ -46,7 +46,7 @@ var resources_trello = [
     practica: ["Trello"],
     formatos: ["web"],
     nivel: ["medio"],
-    idiomas: ["español", "inglés"],
+    idiomas: ["español"],
   },
   {
     titulo: "Checklists Avanzadas en Trello.",
