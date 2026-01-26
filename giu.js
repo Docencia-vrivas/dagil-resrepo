@@ -83,7 +83,8 @@ Array.prototype.creaIndice = function (campo) {
  * @returns Devuelve un índice de los valores de un campo más el número de recursos que lo contienen
  */
 Array.prototype.creaIndiceConCardinalidad = function (campo) {
-  let vector = this;
+  // thisArray es necesario para usarlo luego al establecer la cardinalidad
+  let thisArray = this;
   let terminos = [];
   if (campo) {
     this.forEach(function (resource) {
@@ -98,7 +99,7 @@ Array.prototype.creaIndiceConCardinalidad = function (campo) {
   let result = terminos.map(function (termino) {
     return {
       valor: termino,
-      cardinalidad: vector.selectPorCampo(campo, termino).length,
+      cardinalidad: thisArray.selectPorCampo(campo, termino).length,
     };
   });
   return result;
