@@ -385,4 +385,13 @@ var resources_git = [
     nivel: ["medio"],
     idiomas: ["español"],
   },
+    {
+    titulo: "The Markdown Guide",
+    url: "https://www.markdownguide.org/",
+    tags: ["markdown"],
+    temas: ["Git"],
+    formatos: ["web"],
+    nivel: ["medio"],
+    idiomas: ["inglés"],
+  },
 ];
