@@ -387,7 +387,7 @@ var resources_git = [
   },
     {
     titulo: "The Markdown Guide",
-    url: https://www.markdownguide.org/",
+    url: "https://www.markdownguide.org/",
     tags: ["markdown"],
     temas: ["Git"],
     formatos: ["web"],
