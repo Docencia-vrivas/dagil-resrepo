@@ -1,0 +1,108 @@
+var resources_tdd_jacoco = [
+  {
+    titulo: "Página oficial de Jacoco",
+    url: "https://www.jacoco.org/",
+    tags: ["jacoco", "página oficial"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["web"],
+    nivel: ["avanzado"],
+    idiomas: ["inglés"],
+  },
+
+  {
+    titulo: "Página oficial de JUnit",
+    url: "https://junit.org/",
+    tags: ["junit", "página oficial"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["web"],
+    nivel: ["avanzado"],
+    idiomas: ["inglés"],
+  },
+  {
+    titulo: "Primeros Pasos con JUnit",
+    url: "https://programacion.net/articulo/primeros_pasos_con_junit_265",
+    tags: ["junit"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["web"],
+    nivel: ["básico"],
+    idiomas: ["español"],
+  },
+
+  {
+    titulo: "Curso de JUnit 5 completo",
+    url: "https://www.youtube.com/playlist?list=PLTd5ehIj0goPcVH3xhSudzyazW8CtMvsq",
+    tags: ["junit"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["vídeo"],
+    nivel: ["básico"],
+    idiomas: ["español"],
+  },
+
+  {
+    titulo: "Cobertura en un proyecto maven multimódulo con JaCoCo",
+    url: "https://adictosaltrabajo.com/2022/10/10/cobertura-en-un-proyecto-maven-multimodulo-con-jacoco/",
+    tags: ["jacoco"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["web"],
+    nivel: ["medio"],
+    idiomas: ["español"],
+  },
+  {
+    titulo: "Jacoco: análisis de cobertura de código en Netbeans",
+    url: "https://www.youtube.com/watch?v=HQq9xei4gGE/",
+    tags: ["jacoco"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["vídeo"],
+    nivel: ["básico"],
+    idiomas: ["español"],
+  },
+  {
+    titulo: "Measuring the coverage of your tests",
+    url: "https://quarkus.io/guides/tests-with-coverage",
+    tags: ["jacoco"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["web"],
+    nivel: ["medio"],
+    idiomas: ["inglés"],
+  },
+  {
+    titulo: "Using JaCoCo to measure system test coverage",
+    url: "https://www.youtube.com/watch?v=E5KMvKrs89Q",
+    tags: ["jacoco"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["vídeo"],
+    nivel: ["avanzado"],
+    idiomas: ["inglés"],
+  },
+  {
+    titulo:
+      "Java Unit Testing with JUnit 5 : Test Driven Development with JUnit 5",
+    url: "https://buscaenbuja.ujaen.es/discovery/fulldisplay?docid=alma991004056233504994&context=L&vid=34CBUA_UJA:VU1&lang=es&search_scope=CATALOGO&adaptor=Local%20Search%20Engine",
+    tags: ["junit"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["libro BUJA"],
+    nivel: ["avanzado"],
+    idiomas: ["inglés"],
+  },
+
+  {
+    titulo: "Learn Java Unit Testing with JUnit 5 in 20 Steps",
+    url: "https://buscaenbuja.ujaen.es/discovery/fulldisplay?docid=alma991004057042804994&context=L&vid=34CBUA_UJA:VU1&lang=es&search_scope=CATALOGO&adaptor=Local%20Search%20Engine&tab=Jaen&query=any,contains,junit&offset=0",
+    tags: ["junit"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["vídeos BUJA"],
+    nivel: ["avanzado"],
+    idiomas: ["inglés"],
+  },
+
+  {
+    titulo:
+      "Test-driven java development : invoke TDD principles for end-to-end application development with Java",
+    url: "https://buscaenbuja.ujaen.es/discovery/fulldisplay?docid=alma991004056341304994&context=L&vid=34CBUA_UJA:VU1&lang=es&search_scope=CATALOGO&adaptor=Local%20Search%20Engine&tab=Jaen&query=any,contains,jacoco&offset=0",
+    tags: ["junit", "jacoco"],
+    temas: ["TDD y Jacoco"],
+    formatos: ["libro BUJA"],
+    nivel: ["avanzado"],
+    idiomas: ["inglés"],
+  },
+];
