@@ -15,14 +15,14 @@
   --recurso-sombra: rgba(180, 180, 180, 0.8);
 
   --fondo-gris-oscuro: rgba(180, 180, 180, 1);
-  --fondo-chip-tag: "";
-  --fondo-chip-formato: "";
-  --fondo-chip-temas: "";
+  --fondo-chip-tag: green;
+  --fondo-chip-formato: blue;
+  --fondo-chip-temas: orange;
   --fondo-secciones: white;
 
-  --texto-chip-tag: green;
-  --texto-chip-formato: blue;
-  --texto-chip-temas: orange;
+  --texto-chip-tag: white;
+  --texto-chip-formato: white;
+  --texto-chip-temas: white;
 
   --fondo-campo-busqueda-relleno: rgb(158, 158, 255, 0.1);
   --recuadro-campo-busqueda-relleno: rgba(8, 8, 255, 0.2);
@@ -251,6 +251,7 @@ main {
 .chip-tag,
 .chip-temas {
   border-bottom-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
   font-size: 80%;
   padding: 0em 0.3em 0em 0.3em;
   font-weight: bold;
